@@ -1,19 +1,20 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "noImplicitAny": false, // 不需要显示声明变量 any
+    "target": "ESNext", // 编译后目标 js 版本
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "allowJs": false,
+    "allowJs": false, // 是否允许混合编译 js 文件
     "skipLibCheck": true,
-    "esModuleInterop": false,
+    "esModuleInterop": false, // 是否允许使用 commonjs 的方式 import 默认文件
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "module": "ESNext", // 代码模块系统
+    "moduleResolution": "Node", // 决定编译器编译方式，现在只有 node 了
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
+    "isolatedModules": true, // 编译器会将每个文件当作单独的模块使用
+    "noEmit": true, // 发生错误时，不生成 js 代码
     "jsx": "react-jsx"
   },
   "include": ["src"],
