@@ -14,4 +14,4 @@ react + ts + vite + pnpm
    1. 使用 \*.d.ts 来定义
    2. jss 模块化引入组件
    3. 使用 typescript-plugin-css-modules 来做 css 模块化的 ts 提示
-4.
+4. 加载图片和字体
