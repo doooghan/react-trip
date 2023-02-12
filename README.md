@@ -15,3 +15,6 @@ react + ts + vite + pnpm
    2. jss 模块化引入组件
    3. 使用 typescript-plugin-css-modules 来做 css 模块化的 ts 提示
 4. 加载图片和字体
+5. React 的事件系统，e.target 描述事件发生的元素 和 e.currentTarget 描述事件绑定的元素
+6. React 的 class component 的生命周期
+7. setState 是异步还是同步的
