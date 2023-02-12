@@ -36,3 +36,8 @@ react + ts + vite + pnpm
 7. setState 是异步还是同步的？
    1. 答案：异步更新，同步执行
    2. setState 本身并非异步，但对 state 的处理机制给人一种异步的假象。state 处理一般发生在生命周期变化的时候
+8. 类组件和函数式组件
+   1. 类组件由本身携带 state
+   2. 函数式组件使用 hook 钩入状态
+9. useEffect 的无限循环
+   1. 不带第二个参数，当 update 之后执行回调，回调又回 setState，然后触发 update
