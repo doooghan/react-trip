@@ -9,12 +9,14 @@ import { render } from "react-dom";
 interface Props {}
 interface State {
   robotGallery: any[];
+  count: number;
 }
 class App extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
       robotGallery: [],
+      count: 0,
     };
   }
 
@@ -31,6 +33,40 @@ class App extends React.Component<Props, State> {
           <img src={reactLogo} alt="logo" className={styles.appLogo} />
           <h1>吊炸天</h1>
         </div>
+        <button
+          onClick={() => {
+            this.setState({ count: this.state.count + 1 }, () => {
+              console.log("count+1 回调打印1", this.state.count);
+            });
+            console.log("count+1 同步打印", this.state.count);
+            this.setState({ count: this.state.count + 1 }, () => {
+              console.log("count+1 回调打印2", this.state.count);
+            });
+          }}
+        >
+          Click
+        </button>
+        <span>count+1: {this.state.count} </span>
+        <button
+          onClick={() => {
+            this.setState(
+              (preState, preProps) => ({ count: preState.count + 1 }),
+              () => {
+                console.log("count+2 回调打印1", this.state.count);
+              }
+            );
+            console.log("count+2 同步打印", this.state.count);
+            this.setState(
+              (preState, preProps) => ({ count: preState.count + 1 }),
+              () => {
+                console.log("count+2 回调打印2", this.state.count);
+              }
+            );
+          }}
+        >
+          Click
+        </button>
+        <span>count+2: {this.state.count} </span>
         <ShoppingCart />
         <div className={styles.robotList}>
           {this.state.robotGallery.map((r) => (

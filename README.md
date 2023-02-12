@@ -17,4 +17,6 @@ react + ts + vite + pnpm
 4. 加载图片和字体
 5. React 的事件系统，e.target 描述事件发生的元素 和 e.currentTarget 描述事件绑定的元素
 6. React 的 class component 的生命周期
-7. setState 是异步还是同步的
+7. setState 是异步还是同步的？
+   1. 答案：异步更新，同步执行
+   2. setState 本身并非异步，但对 state 的处理机制给人一种异步的假象。state 处理一般发生在生命周期变化的时候
