@@ -13,7 +13,6 @@ const App: React.FC = (props) => {
   const [count, setCount] = useState(0);
   const [robotGallery, setRobotGallery] = useState<any[]>([]);
   useEffect(() => {
-    console.log("effect count 依赖");
     document.title = `点击了${count}次`;
   }, [count]);
   // useEffect(() => {
@@ -22,10 +21,12 @@ const App: React.FC = (props) => {
   // });
 
   useEffect(() => {
-    console.log("fetch");
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((data) => setRobotGallery(data));
+    const fetchData = async () => {
+      const res = await fetch("https://jsonplaceholder.typicode.com/users");
+      const data = await res.json();
+      setRobotGallery(data);
+    };
+    fetchData();
   }, []);
 
   return (
