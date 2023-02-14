@@ -25,7 +25,7 @@ const App: React.FC = (props) => {
         const res = await fetch("https://jsonplaceholder.typicode.com/users");
         const data = await res.json();
         setRobotGallery(data);
-      } catch (e) {
+      } catch (e: any) {
         setError(e.message);
       }
       setTimeout(() => {
