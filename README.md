@@ -41,3 +41,4 @@ react + ts + vite + pnpm
    2. 函数式组件使用 hook 钩入状态
 9. useEffect 的无限循环
    1. 不带第二个参数，当 update 之后执行回调，回调又回 setState，然后触发 update
+10. 使用 context 来解决 prop drilling

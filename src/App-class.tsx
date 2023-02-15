@@ -10,6 +10,7 @@ interface State {
   robotGallery: any[];
   count: number;
 }
+// app.tsx 的 class 写法
 class App extends React.Component<Props, State> {
   constructor(props) {
     super(props);
