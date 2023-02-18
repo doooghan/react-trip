@@ -22,6 +22,7 @@ class ShoppingCart extends React.Component<Props, State> {
     this.setState({ isOpen: !this.state.isOpen });
   };
 
+  // 使用 context consumer
   render(): React.ReactNode {
     return (
       <appContext.Consumer>

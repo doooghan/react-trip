@@ -42,3 +42,8 @@ react + ts + vite + pnpm
 9. useEffect 的无限循环
    1. 不带第二个参数，当 update 之后执行回调，回调又回 setState，然后触发 update
 10. 使用 context 来解决 prop drilling
+11. 为什么使用高阶组件
+    1. 代替了 mixin 的使用
+    2. 抽取重复代码，实现逻辑复用
+    3. 条件渲染，控制组件的渲染逻辑（渲染劫持）
+    4. 捕获/劫持被处理组件的生命周期

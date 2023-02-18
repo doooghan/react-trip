@@ -3,6 +3,8 @@ import reactLogo from "./assets/react.svg";
 import Robot from "./components/Robot";
 import styles from "./App.module.css";
 import ShoppingCart from "./components/ShoppingCart";
+import RobotDiscount from "./components/RobotDiscount";
+import data from "./mock/robots.json";
 
 interface Props {}
 interface State {
@@ -22,8 +24,9 @@ const App: React.FC = (props) => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await fetch("https://jsonplaceholder.typicode.com/users");
-        const data = await res.json();
+        // const res = await fetch("https://jsonplaceholder.typicode.com/users");
+        // const data = await res.json();
+
         setRobotGallery(data);
       } catch (e: any) {
         setError(e.message);
@@ -39,7 +42,7 @@ const App: React.FC = (props) => {
     <div className={styles.app}>
       <div className={styles.appHeader}>
         <img src={reactLogo} alt="logo" className={styles.appLogo} />
-        <h1>吊炸天</h1>
+        <h1>盼盼的吊-爆了</h1>
       </div>
       <button
         onClick={() => {
@@ -53,9 +56,18 @@ const App: React.FC = (props) => {
       {error && error !== "" ? <div>网站出错：{error}</div> : ""}
       {!loading ? (
         <div className={styles.robotList}>
-          {robotGallery.map((r) => (
-            <Robot id={r.id} name={r.name} email={r.email} key={r.name} />
-          ))}
+          {robotGallery.map((r, index) =>
+            index % 2 === 0 ? (
+              <Robot id={r.id} name={r.name} email={r.email} key={r.name} />
+            ) : (
+              <RobotDiscount
+                id={r.id}
+                name={r.name}
+                email={r.email}
+                key={r.name}
+              />
+            )
+          )}
         </div>
       ) : (
         <h2>loading。。。加载中</h2>
