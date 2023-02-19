@@ -1,23 +1,19 @@
 import React, { useContext } from "react";
 import styles from "./Robot.module.css";
 import { appContext, appSetStateContext } from "../AppState";
-import { withAddToCart } from "./addToCart";
+import { useAddToCart } from "./addToCart";
 
 interface RobotProps {
   id: number;
   name: string;
   email: string;
-  addToCart: (id, name) => void;
 }
 
-const RobotDiscount: React.FC<RobotProps> = ({
-  id,
-  name,
-  email,
-  addToCart,
-}) => {
+const RobotDiscount: React.FC<RobotProps> = ({ id, name, email }) => {
   // 使用 useContext
   const value = useContext(appContext);
+  // 使用自定义 hook
+  const addToCart = useAddToCart();
 
   return (
     <div className={styles.cardContainer}>
@@ -31,4 +27,4 @@ const RobotDiscount: React.FC<RobotProps> = ({
   );
 };
 
-export default withAddToCart(RobotDiscount);
+export default RobotDiscount;
