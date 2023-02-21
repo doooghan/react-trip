@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styles from "./Robot.module.css";
-import { appContext, appSetStateContext } from "../AppState";
+import { appContext, appSetStateContext } from "../ShoppingState";
 import { useAddToCart } from "./addToCart";
 
 interface RobotProps {

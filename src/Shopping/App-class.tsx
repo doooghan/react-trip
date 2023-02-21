@@ -1,6 +1,6 @@
 import React from "react";
 import reactLogo from "./assets/react.svg";
-import robtos from "./mock/robots.json";
+import robtos from "../../mock/robots.json";
 import Robot from "./components/Robot";
 import styles from "./App.module.css";
 import ShoppingCart from "./components/ShoppingCart";
