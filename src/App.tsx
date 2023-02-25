@@ -7,6 +7,7 @@ import { Footer } from "./components/footer/Footer";
 import { SideMenu } from "./components/sideMenu/SideMenu";
 import { Carousel } from "./components/carousel/Carousel";
 import { ProductCollection } from "./components/productCollection/ProductCollection";
+import { BusinessPartners } from "./components/businessPartners/BusinessPartners";
 
 import sideImage from "./assets/images/sider_2019_12-09.png";
 import sideImage2 from "./assets/images/sider_2019_02-04.png";
@@ -57,6 +58,7 @@ const App: React.FC = () => {
           products={productList3}
         />
       </div>
+      <BusinessPartners />
       <Footer />
     </div>
   );

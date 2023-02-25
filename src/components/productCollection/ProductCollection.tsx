@@ -34,7 +34,7 @@ export const ProductCollection: React.FC<PropsType> = ({
   });
 
   return (
-    <div>
+    <div className={styles.content}>
       <Divider orientation="left">{title}</Divider>
       <Row>
         <Col span={4}>
