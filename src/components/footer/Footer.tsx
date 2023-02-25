@@ -6,7 +6,11 @@ export const Footer: React.FC = () => {
     <Layout.Footer>
       <Typography.Title
         level={3}
-        style={{ textAlign: "center", lineHeight: "60px" }}
+        style={{
+          textAlign: "center",
+          lineHeight: "60px",
+          background: "#f5f5f5",
+        }}
       >
         版权所有 @ 旅游网
       </Typography.Title>
