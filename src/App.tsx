@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./App.module.css";
 import { Row, Col, Typography } from "antd";
 
-import { Header } from "./components/header/Header";
+import { Header } from "@/components/header/Header";
 import { Footer } from "./components/footer/Footer";
 import { SideMenu } from "./components/sideMenu/SideMenu";
 import { Carousel } from "./components/carousel/Carousel";
