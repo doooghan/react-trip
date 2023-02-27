@@ -18,6 +18,7 @@ import { productList1, productList2, productList3 } from "@/../mock/mockup";
 
 export class HomePage extends React.Component {
   render(): ReactNode {
+    console.log(this.props);
     return (
       <>
         <Header />
