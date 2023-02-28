@@ -1,5 +1,5 @@
 import { Image, Typography } from "antd";
-import { withRouter, RouteComponentProps } from "react-router-dom";
+import { withRouter, RouteComponentProps, Link } from "react-router-dom";
 import mFacebook from "../../assets/images/facebook-807588_640.png";
 
 interface PropsType extends RouteComponentProps {
@@ -21,7 +21,7 @@ const ProductImageComponent: React.FC<PropsType> = ({
   const [width, height] = size === "large" ? [490, 285] : [240, 120];
   imageSrc = mFacebook;
   return (
-    <div onClick={() => history.push(`/detail/${id}`)}>
+    <Link to={`detail/${id}`}>
       <Image src={imageSrc} width={width} height={height} />
       <div>
         <Typography.Text type="secondary">{title.slice(0, 25)}</Typography.Text>
@@ -29,7 +29,7 @@ const ProductImageComponent: React.FC<PropsType> = ({
           ¥ {price} 起
         </Typography.Text>
       </div>
-    </div>
+    </Link>
   );
 };
 
