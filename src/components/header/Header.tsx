@@ -11,6 +11,12 @@ import {
   MenuProps,
 } from "antd";
 import { GlobalOutlined } from "@ant-design/icons";
+import {
+  useHistory,
+  useLocation,
+  useParams,
+  useRouteMatch,
+} from "react-router-dom";
 
 const { Title, Text } = Typography;
 
@@ -34,6 +40,11 @@ const items: MenuProps["items"] = [
 ];
 
 export const Header: React.FC = () => {
+  const history = useHistory();
+  console.log("useLocation", useLocation());
+  console.log("useParams", useParams());
+  console.log("useRouteMatch", useRouteMatch());
+
   return (
     <div className={styles["app-header"]}>
       {/* top-header */}
@@ -60,17 +71,20 @@ export const Header: React.FC = () => {
             语言
           </Dropdown.Button>
           <Button.Group className={styles["button-group"]}>
-            <Button>注册</Button>
-            <Button>登陆</Button>
+            <Button onClick={() => history.push("register")}>注册</Button>
+            <Button onClick={() => history.push("signIn")}>登陆</Button>
           </Button.Group>
         </div>
       </div>
 
       <Layout.Header className={styles["main-header"]}>
-        <img src={logo} alt="" className={styles["App-logo"]} />
-        <Title level={3} className={styles.title}>
-          欢迎来到 react trip
-        </Title>
+        <span onClick={() => history.push("/")}>
+          <img src={logo} alt="" className={styles["App-logo"]} />
+          <Title level={3} className={styles.title}>
+            欢迎来到 react trip
+          </Title>
+        </span>
+
         <Input.Search
           placeholder={"请搜索"}
           className={styles["search-input"]}

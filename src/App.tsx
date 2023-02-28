@@ -12,7 +12,7 @@ const App: React.FC = () => {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route path="/signin" component={SignInPage} />
+          <Route path="/signIn" component={SignInPage} />
           <Route path="/register" component={RegisterPage} />
           <Route path="/detail/:touristRouteId" component={DetailPage} />
           <Route render={() => <h1>404 not found!</h1>} />
