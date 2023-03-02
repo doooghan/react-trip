@@ -44,6 +44,7 @@ export const Header: React.FC = () => {
   console.log("useLocation", useLocation());
   console.log("useParams", useParams());
   console.log("useRouteMatch", useRouteMatch());
+  console.log("header.FC.tsx");
 
   return (
     <div className={styles["app-header"]}>

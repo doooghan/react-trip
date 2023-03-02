@@ -27,9 +27,27 @@ class HeaderComponent extends React.Component<RouteComponentProps, State> {
       language: storeState.language,
       languageList: storeState.languageList,
     };
+    store.subscribe(this.handleStoreChange);
   }
+  handleStoreChange = () => {
+    console.log("subscribe handleStoreChange");
+    const storeState = store.getState();
+    this.setState({
+      language: storeState.language,
+    });
+  };
+
+  menuClickHandler = (e) => {
+    console.log("menuClickHandler", e);
+    const action = {
+      type: "change_language",
+      payload: e.key,
+    };
+    store.dispatch(action);
+  };
 
   render() {
+    console.log("header.class.tsx");
     const { history } = this.props;
     const items: MenuProps["items"] = [
       { label: "旅游首页", key: "1" },
@@ -65,6 +83,7 @@ class HeaderComponent extends React.Component<RouteComponentProps, State> {
                     key: l.code,
                   };
                 }),
+                onClick: this.menuClickHandler,
               }}
             >
               {this.state.language === "zh" ? "中文" : "English"}
