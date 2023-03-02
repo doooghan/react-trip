@@ -1,6 +1,8 @@
-interface LanguageState {
-  language: "zh" | "en";
-  languageList: { name: string; code: string }[];
+type Language = "zh" | "en";
+
+export interface LanguageState {
+  language: Language;
+  languageList: { name: string; code: Language }[];
 }
 
 const defaultState: LanguageState = {

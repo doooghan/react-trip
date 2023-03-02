@@ -12,31 +12,43 @@ import {
 } from "antd";
 import { GlobalOutlined } from "@ant-design/icons";
 import { withRouter, RouteComponentProps } from "react-router-dom";
+import store from "@/redux/store";
+import { LanguageState } from "@/redux/languageReducer";
 
 const { Title, Text } = Typography;
 
-const items: MenuProps["items"] = [
-  { label: "旅游首页", key: "1" },
-  { label: "周末游", key: "2" },
-  { label: "跟团游", key: "3" },
-  { label: "自由行", key: "4" },
-  { label: "私家团", key: "5" },
-  { label: "邮轮", key: "6" },
-  { label: "酒店+景点", key: "7" },
-  { label: "当地玩乐", key: "8" },
-  { label: "主题游", key: "9" },
-  { label: "定制游", key: "10" },
-  { label: "游学", key: "11" },
-  { label: "签证", key: "12" },
-  { label: "企业游", key: "13" },
-  { label: "高端游", key: "14" },
-  { label: "爱玩户外", key: "15" },
-  { label: "保险", key: "16" },
-];
+interface State extends LanguageState {}
 
-class HeaderComponent extends React.Component<RouteComponentProps> {
+class HeaderComponent extends React.Component<RouteComponentProps, State> {
+  constructor(props) {
+    super(props);
+    const storeState = store.getState();
+    this.state = {
+      language: storeState.language,
+      languageList: storeState.languageList,
+    };
+  }
+
   render() {
     const { history } = this.props;
+    const items: MenuProps["items"] = [
+      { label: "旅游首页", key: "1" },
+      { label: "周末游", key: "2" },
+      { label: "跟团游", key: "3" },
+      { label: "自由行", key: "4" },
+      { label: "私家团", key: "5" },
+      { label: "邮轮", key: "6" },
+      { label: "酒店+景点", key: "7" },
+      { label: "当地玩乐", key: "8" },
+      { label: "主题游", key: "9" },
+      { label: "定制游", key: "10" },
+      { label: "游学", key: "11" },
+      { label: "签证", key: "12" },
+      { label: "企业游", key: "13" },
+      { label: "高端游", key: "14" },
+      { label: "爱玩户外", key: "15" },
+      { label: "保险", key: "16" },
+    ];
     return (
       <div className={styles["app-header"]}>
         {/* top-header */}
@@ -47,20 +59,15 @@ class HeaderComponent extends React.Component<RouteComponentProps> {
               style={{ marginLeft: 15, width: "80%", marginTop: "5px" }}
               icon={<GlobalOutlined />}
               menu={{
-                items: [
-                  {
-                    label: "中文",
-                    key: "1",
-                  },
-                  {
-                    label: "English",
-                    key: "2",
-                  },
-                ],
-                onClick: () => {},
+                items: this.state.languageList.map((l) => {
+                  return {
+                    label: l.name,
+                    key: l.code,
+                  };
+                }),
               }}
             >
-              语言
+              {this.state.language === "zh" ? "中文" : "English"}
             </Dropdown.Button>
             <Button.Group className={styles["button-group"]}>
               <Button onClick={() => history.push("register")}>注册</Button>
