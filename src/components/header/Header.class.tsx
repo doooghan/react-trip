@@ -37,17 +37,26 @@ class HeaderComponent extends React.Component<RouteComponentProps, State> {
     const storeState = store.getState();
     this.setState({
       language: storeState.language,
+      languageList: storeState.languageList,
     });
   };
 
   menuClickHandler = (e) => {
-    console.log("menuClickHandler", e);
-    const action = {
-      type: "change_language",
-      payload: e.key,
-    };
-    console.log("step3: dispatch action");
-    store.dispatch(action);
+    console.log("step3: dispatch action, menuClickHandler", e);
+
+    if (e.key === "new") {
+      const action = {
+        type: "add_language",
+        payload: { name: "新语言", code: "new_lang" },
+      };
+      store.dispatch(action);
+    } else {
+      const action = {
+        type: "change_language",
+        payload: e.key,
+      };
+      store.dispatch(action);
+    }
   };
 
   render() {
@@ -71,6 +80,15 @@ class HeaderComponent extends React.Component<RouteComponentProps, State> {
       { label: "爱玩户外", key: "15" },
       { label: "保险", key: "16" },
     ];
+    const LanguageItems = [
+      ...this.state.languageList.map((l) => {
+        return {
+          label: l.name,
+          key: l.code,
+        };
+      }),
+      { label: "添加新语言", key: "new" },
+    ];
     return (
       <div className={styles["app-header"]}>
         {/* top-header */}
@@ -81,12 +99,7 @@ class HeaderComponent extends React.Component<RouteComponentProps, State> {
               style={{ marginLeft: 15, width: "80%", marginTop: "5px" }}
               icon={<GlobalOutlined />}
               menu={{
-                items: this.state.languageList.map((l) => {
-                  return {
-                    label: l.name,
-                    key: l.code,
-                  };
-                }),
+                items: LanguageItems,
                 onClick: this.menuClickHandler,
               }}
             >

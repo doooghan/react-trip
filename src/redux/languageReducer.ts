@@ -15,12 +15,18 @@ const defaultState: LanguageState = {
 
 export default (state = defaultState, action) => {
   console.log("languageReducer state action", state, action);
-  if (action.type === "change_language") {
-    console.log("step4: change state create new state");
+  console.log("step4: change state create new state");
+  switch (action.type) {
+    case "change_language":
+      return { ...state, language: action.payload };
 
-    const newState = { ...state, language: action.payload };
-    return newState;
+    case "add_language":
+      return {
+        ...state,
+        languageList: [...state.languageList, action.payload],
+      };
+
+    default:
+      return state;
   }
-  console.log("step1: redux create");
-  return state;
 };
