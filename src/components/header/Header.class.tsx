@@ -22,6 +22,8 @@ interface State extends LanguageState {}
 class HeaderComponent extends React.Component<RouteComponentProps, State> {
   constructor(props) {
     super(props);
+
+    console.log("step2: get state");
     const storeState = store.getState();
     this.state = {
       language: storeState.language,
@@ -30,7 +32,8 @@ class HeaderComponent extends React.Component<RouteComponentProps, State> {
     store.subscribe(this.handleStoreChange);
   }
   handleStoreChange = () => {
-    console.log("subscribe handleStoreChange");
+    console.log("step5: call subscribe");
+
     const storeState = store.getState();
     this.setState({
       language: storeState.language,
@@ -43,6 +46,7 @@ class HeaderComponent extends React.Component<RouteComponentProps, State> {
       type: "change_language",
       payload: e.key,
     };
+    console.log("step3: dispatch action");
     store.dispatch(action);
   };
 
