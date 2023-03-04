@@ -13,8 +13,12 @@ import {
 import { GlobalOutlined } from "@ant-design/icons";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import store from "@/redux/store";
-import { LanguageState } from "@/redux/languageReducer";
+import { LanguageState } from "@/redux/language/languageReducer";
 import { withTranslation, WithTranslation } from "react-i18next";
+import {
+  changeLanguageActionCreator,
+  addLanguageActionCreator,
+} from "@/redux/language/languageActions";
 
 const { Title, Text } = Typography;
 
@@ -49,16 +53,10 @@ class HeaderComponent extends React.Component<
     console.log("step3: dispatch action, menuClickHandler", e);
 
     if (e.key === "new") {
-      const action = {
-        type: "add_language",
-        payload: { name: "新语言", code: "new_lang" },
-      };
+      const action = addLanguageActionCreator("新语言", "new_lange");
       store.dispatch(action);
     } else {
-      const action = {
-        type: "change_language",
-        payload: e.key,
-      };
+      const action = changeLanguageActionCreator(e.key);
       store.dispatch(action);
     }
   };
