@@ -14,12 +14,16 @@ import { GlobalOutlined } from "@ant-design/icons";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import store from "@/redux/store";
 import { LanguageState } from "@/redux/languageReducer";
+import { withTranslation, WithTranslation } from "react-i18next";
 
 const { Title, Text } = Typography;
 
 interface State extends LanguageState {}
 
-class HeaderComponent extends React.Component<RouteComponentProps, State> {
+class HeaderComponent extends React.Component<
+  RouteComponentProps & WithTranslation,
+  State
+> {
   constructor(props) {
     super(props);
 
@@ -61,25 +65,27 @@ class HeaderComponent extends React.Component<RouteComponentProps, State> {
 
   render() {
     console.log("header.class.tsx");
-    const { history } = this.props;
+    const { history, t } = this.props;
+
     const items: MenuProps["items"] = [
-      { label: "旅游首页", key: "1" },
-      { label: "周末游", key: "2" },
-      { label: "跟团游", key: "3" },
-      { label: "自由行", key: "4" },
-      { label: "私家团", key: "5" },
-      { label: "邮轮", key: "6" },
-      { label: "酒店+景点", key: "7" },
-      { label: "当地玩乐", key: "8" },
-      { label: "主题游", key: "9" },
-      { label: "定制游", key: "10" },
-      { label: "游学", key: "11" },
-      { label: "签证", key: "12" },
-      { label: "企业游", key: "13" },
-      { label: "高端游", key: "14" },
-      { label: "爱玩户外", key: "15" },
-      { label: "保险", key: "16" },
+      { label: t("header.home_page"), key: "1" },
+      { label: t("header.weekend"), key: "2" },
+      { label: t("header.group"), key: "3" },
+      { label: t("header.backpack"), key: "4" },
+      { label: t("header.private"), key: "5" },
+      { label: t("header.cruise"), key: "6" },
+      { label: t("header.hotel"), key: "7" },
+      { label: t("header.local"), key: "8" },
+      { label: t("header.theme"), key: "9" },
+      { label: t("header.custom"), key: "10" },
+      { label: t("header.study"), key: "11" },
+      { label: t("header.visa"), key: "12" },
+      { label: t("header.enterprise"), key: "13" },
+      { label: t("header.high_end"), key: "14" },
+      { label: t("header.outdoor"), key: "15" },
+      { label: t("header.insurance"), key: "16" },
     ];
+
     const LanguageItems = [
       ...this.state.languageList.map((l) => {
         return {
@@ -89,12 +95,13 @@ class HeaderComponent extends React.Component<RouteComponentProps, State> {
       }),
       { label: "添加新语言", key: "new" },
     ];
+
     return (
       <div className={styles["app-header"]}>
         {/* top-header */}
         <div className={styles["top-header"]}>
           <div className={styles.inner}>
-            <Text className={styles.slogan}>让旅游更幸福</Text>
+            <Text className={styles.slogan}>{t("header.slogan")}</Text>
             <Dropdown.Button
               style={{ marginLeft: 15, width: "80%", marginTop: "5px" }}
               icon={<GlobalOutlined />}
@@ -106,8 +113,12 @@ class HeaderComponent extends React.Component<RouteComponentProps, State> {
               {this.state.language === "zh" ? "中文" : "English"}
             </Dropdown.Button>
             <Button.Group className={styles["button-group"]}>
-              <Button onClick={() => history.push("register")}>注册</Button>
-              <Button onClick={() => history.push("signIn")}>登陆</Button>
+              <Button onClick={() => history.push("register")}>
+                {t("header.register")}
+              </Button>
+              <Button onClick={() => history.push("signIn")}>
+                {t("header.signin")}
+              </Button>
             </Button.Group>
           </div>
         </div>
@@ -116,7 +127,8 @@ class HeaderComponent extends React.Component<RouteComponentProps, State> {
           <span onClick={() => history.push("/")}>
             <img src={logo} alt="" className={styles["App-logo"]} />
             <Title level={3} className={styles.title}>
-              欢迎来到 react trip
+              欢迎来到
+              {t("header.title")}
             </Title>
           </span>
 
@@ -136,4 +148,4 @@ class HeaderComponent extends React.Component<RouteComponentProps, State> {
   }
 }
 
-export const Header = withRouter(HeaderComponent);
+export const Header = withTranslation()(withRouter(HeaderComponent));

@@ -10,12 +10,15 @@ const companies = [
   { src: image3, title: "Ins" },
   { src: image4, title: "Facebook" },
 ];
-
+import { useTranslation } from "react-i18next";
 export const BusinessPartners: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <div className={styles.content}>
       <Divider orientation="left">
-        <Typography.Title level={3}>合作企业</Typography.Title>
+        <Typography.Title level={3}>
+          {t("home_page.joint_venture")}
+        </Typography.Title>
       </Divider>
 
       <Row>

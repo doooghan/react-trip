@@ -1,7 +1,9 @@
 import React from "react";
 import { Layout, Typography } from "antd";
+import { useTranslation } from "react-i18next";
 
 export const Footer: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <Layout.Footer>
       <Typography.Title
@@ -12,7 +14,7 @@ export const Footer: React.FC = () => {
           background: "#f5f5f5",
         }}
       >
-        版权所有 @ 旅游网
+        {t("footer.detail")}
       </Typography.Title>
     </Layout.Footer>
   );

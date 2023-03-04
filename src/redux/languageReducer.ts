@@ -1,3 +1,5 @@
+import i18n from "i18next";
+
 type Language = "zh" | "en";
 
 export interface LanguageState {
@@ -15,9 +17,10 @@ const defaultState: LanguageState = {
 
 export default (state = defaultState, action) => {
   console.log("languageReducer state action", state, action);
-  console.log("step4: change state create new state");
   switch (action.type) {
     case "change_language":
+      console.log("step4: change state create new state");
+      i18n.changeLanguage(action.payload);
       return { ...state, language: action.payload };
 
     case "add_language":
