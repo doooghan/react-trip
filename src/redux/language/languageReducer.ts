@@ -9,7 +9,7 @@ export type Language = "zh" | "en";
 
 export interface LanguageState {
   language: Language;
-  languageList: { name: string; code: Language }[];
+  languageList: { name: string; code: string }[];
 }
 
 const defaultState: LanguageState = {
