@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import reactLogo from "../assets/react.svg";
+import reactLogo from "@/assets/react.svg";
 import Robot from "./components/Robot";
 import styles from "./Shopping.module.css";
 import ShoppingCart from "./components/ShoppingCart";
 import RobotDiscount from "./components/RobotDiscount";
-import data from "../../mock/robots.json";
+import data from "@/../mock/robots.json";
 
 interface Props {}
 interface State {
