@@ -16,35 +16,53 @@ import sideImage3 from "@/assets/images/sider_2019_02-04-2.png";
 
 import { withTranslation, WithTranslation } from "react-i18next";
 import axios from "axios";
+import {
+  fetchRecommendProductFailActionCreator,
+  fetchRecommendProductStartActionCreator,
+  fetchRecommendProductSuccessActionCreator,
+} from "@/redux/recommendProducts/recommendProductsActions";
+import { connect } from "react-redux";
+import { RootState } from "@/redux/store";
 
-interface State {
-  loading: boolean;
-  error: string | null;
-  productList: any[];
-}
+const mapStateToProps = (state: RootState) => {
+  return {
+    loading: state.recommendProducts.loading,
+    error: state.recommendProducts.error,
+    productList: state.recommendProducts.productList,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchStart: () => {
+      dispatch(fetchRecommendProductStartActionCreator());
+    },
+    fetchSuccess: (data) => {
+      dispatch(fetchRecommendProductSuccessActionCreator(data));
+    },
+    fetchFail: (error) => {
+      dispatch(fetchRecommendProductFailActionCreator(error));
+    },
+  };
+};
 
-class HomePageComponent extends React.Component<WithTranslation, State> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: true,
-      error: null,
-      productList: [],
-    };
-  }
+type PropsType = WithTranslation &
+  ReturnType<typeof mapStateToProps> &
+  ReturnType<typeof mapDispatchToProps>;
 
+class HomePageComponent extends React.Component<PropsType> {
   async componentDidMount() {
+    this.props.fetchStart();
     try {
       const { data } = await axios.get("/mock/api/productCollections");
-      this.setState({ loading: false, productList: data, error: null });
+      this.props.fetchSuccess(data);
     } catch (error: any) {
-      this.setState({ error: error.message, loading: false });
+      this.props.fetchFail(error.message);
     }
   }
 
   render(): ReactNode {
     const { t } = this.props;
-    const { productList, loading, error } = this.state;
+    const { productList, loading, error } = this.props;
 
     if (loading) {
       return (
@@ -113,4 +131,7 @@ class HomePageComponent extends React.Component<WithTranslation, State> {
   }
 }
 
-export const HomePage = withTranslation()(HomePageComponent);
+export const HomePage = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withTranslation()(HomePageComponent));

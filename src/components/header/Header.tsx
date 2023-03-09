@@ -33,8 +33,8 @@ export const Header: React.FC = () => {
   console.log("useParams", useParams());
   console.log("useRouteMatch", useRouteMatch());
   console.log("header.FC.tsx");
-  const language = useSelector((store) => store.language);
-  const languageList = useSelector((store) => store.languageList);
+  const language = useSelector((store) => store.language.language);
+  const languageList = useSelector((store) => store.language.languageList);
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
