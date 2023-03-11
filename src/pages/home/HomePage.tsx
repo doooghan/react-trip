@@ -14,6 +14,7 @@ import sideImage from "@/assets/images/sider_2019_12-09.png";
 import sideImage2 from "@/assets/images/sider_2019_02-04.png";
 import sideImage3 from "@/assets/images/sider_2019_02-04-2.png";
 
+import { withRouter, RouteComponentProps } from "react-router-dom";
 import { withTranslation, WithTranslation } from "react-i18next";
 import { giveMeDataActionCreator } from "@/redux/recommendProducts/recommendProductsActions";
 import { connect } from "react-redux";
@@ -34,12 +35,19 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-type PropsType = WithTranslation &
+type PropsType = RouteComponentProps &
+  WithTranslation &
   ReturnType<typeof mapStateToProps> &
   ReturnType<typeof mapDispatchToProps>;
 
 class HomePageComponent extends React.Component<PropsType> {
   componentDidMount() {
+    console.log(
+      "route location",
+      this.props.location,
+      "match",
+      this.props.match
+    );
     this.props.giveMeData();
   }
 
@@ -117,4 +125,4 @@ class HomePageComponent extends React.Component<PropsType> {
 export const HomePage = connect(
   mapStateToProps,
   mapDispatchToProps
-)(withTranslation()(HomePageComponent));
+)(withTranslation()(withRouter(HomePageComponent)));

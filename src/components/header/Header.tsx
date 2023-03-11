@@ -11,12 +11,7 @@ import {
   MenuProps,
 } from "antd";
 import { GlobalOutlined } from "@ant-design/icons";
-import {
-  useHistory,
-  useLocation,
-  useParams,
-  useRouteMatch,
-} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "@/redux/hooks";
 import {
@@ -28,11 +23,9 @@ import { useTranslation } from "react-i18next";
 const { Title, Text } = Typography;
 
 export const Header: React.FC = () => {
-  const history = useHistory();
-  console.log("useLocation", useLocation());
-  console.log("useParams", useParams());
-  console.log("useRouteMatch", useRouteMatch());
   console.log("header.FC.tsx");
+
+  const history = useHistory();
   const language = useSelector((store) => store.language.language);
   const languageList = useSelector((store) => store.language.languageList);
   const dispatch = useDispatch();

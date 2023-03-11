@@ -33,7 +33,6 @@ export default (state = defaultState, action: LanguageActionTypes) => {
       };
 
     default:
-      console.log("step1: defaultState");
       return state;
   }
 };
