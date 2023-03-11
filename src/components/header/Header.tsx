@@ -68,8 +68,6 @@ export const Header: React.FC = () => {
   ];
 
   const menuClickHandler = (e) => {
-    console.log("step3: dispatch action, menuClickHandler", e);
-
     if (e.key === "new") {
       dispatch(addLanguageActionCreator("新语言", "new_lang"));
     } else {

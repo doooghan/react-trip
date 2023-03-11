@@ -21,11 +21,8 @@ const defaultState: LanguageState = {
 };
 
 export default (state = defaultState, action: LanguageActionTypes) => {
-  console.log("languageReducer state action", state, action);
-
   switch (action.type) {
     case CHANGE_LANGUAGE:
-      console.log("step4: change state create new state");
       i18n.changeLanguage(action.payload);
       return { ...state, language: action.payload };
 
