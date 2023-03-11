@@ -57,3 +57,9 @@ react + ts + vite + pnpm
     3. 使用 react-redux 完成类组件和函数式组件的使用
 14. 使用 redux 与 i18n 完成了项目的国际化
 15. 使用自定义 hooks - 完成组件与 store 的解耦
+16. 使用 redux 代替 mvc 架构
+17. 使用 redux-thunk
+    1. thunk 可以返回一个函数，而不一定是 js 对象
+    2. 在一个 thunk action 中可以完成一些连续的 action 操作
+    3. 并且可以处理异步逻辑
+    4. 业务逻辑可以从 ui 层面挪到这里，代码分层会更清晰
