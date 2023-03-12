@@ -63,3 +63,4 @@ react + ts + vite + pnpm
     2. 在一个 thunk action 中可以完成一些连续的 action 操作
     3. 并且可以处理异步逻辑
     4. 业务逻辑可以从 ui 层面挪到这里，代码分层会更清晰
+18. 使用 actionLog 中间件

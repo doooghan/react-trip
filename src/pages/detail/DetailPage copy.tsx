@@ -6,7 +6,6 @@ import styles from "./DetailPage.module.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer/Footer";
 import { ProductIntro } from "@/components/productIntro/ProductIntro";
-
 const { RangePicker } = DatePicker;
 
 interface MatchParams {
@@ -22,6 +21,7 @@ export const DetailPage: React.FC<RouteComponentProps<MatchParams>> = (
   const { touristRouteId } = useParams<MatchParams>();
 
   useEffect(() => {
+    console.log("fetch");
     const fetchData = async () => {
       setLoading(true);
       try {
@@ -80,7 +80,7 @@ export const DetailPage: React.FC<RouteComponentProps<MatchParams>> = (
               />
             </Col>
             <Col span={11}>
-              <RangePicker open style={{ marginTop: "20px" }} />
+              <RangePicker open />
             </Col>
           </Row>
         </div>
