@@ -7,6 +7,9 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer/Footer";
 import { ProductIntro } from "@/components/productIntro/ProductIntro";
 import { ProductComments } from "@/components/productComments/ProductComments";
+import { useSelector } from "@/redux/hooks";
+import { useDispatch } from "react-redux";
+import { ProductDetailSlice } from "@/redux/productDetail/slice";
 
 const { RangePicker } = DatePicker;
 
@@ -17,23 +20,29 @@ interface MatchParams {
 export const DetailPage: React.FC<RouteComponentProps<MatchParams>> = (
   props
 ) => {
-  const [loading, setLoading] = useState(true);
-  const [product, setProduct] = useState<any>(null);
-  const [error, setError] = useState<any>(null);
+  // const [loading, setLoading] = useState(true);
+  // const [product, setProduct] = useState<any>(null);
+  // const [error, setError] = useState<any>(null);
   const { touristRouteId } = useParams<MatchParams>();
+
+  const loading = useSelector(state => state.productDetail.loading)
+  const error = useSelector(state=>state.productDetail.error)
+  const product = useSelector(state=>state.productDetail.data)
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true);
+      dispatch(ProductDetailSlice.actions.fetchStart())
       try {
         const { data } = await axios.get(
           `/api/touristRoutes/${touristRouteId}`
         );
-        setProduct(data);
-        setLoading(false);
+        dispatch(ProductDetailSlice.actions.fetchSuccess(data))
+
       } catch (error: any) {
-        setError(error.message);
-        setLoading(false);
+        dispatch(ProductDetailSlice.actions.fetchFail(error.message))
+
       }
     };
     fetchData();
