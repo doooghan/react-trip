@@ -1,0 +1,23 @@
+import { Footer } from "@/components/footer/Footer";
+import { Header } from "@/components/header/Header";
+import styles from "./SearchPage.module.css";
+import { FilterArea, ProductList } from "@/components";
+
+export const SearchPage: React.FC = () => {
+  return (
+    <>
+      <Header></Header>
+      <div className={styles["page-content"]}>
+        {/* 分类过滤器 */}
+        <div className={styles["product-list-container"]}>
+          <FilterArea />
+        </div>
+        {/* 产品列表 */}
+        <div className={styles["product-list-container"]}>
+          <ProductList />
+        </div>
+      </div>
+      <Footer></Footer>
+    </>
+  );
+};
