@@ -93,7 +93,7 @@ export default [
     url: "/api/touristRoutes",
     method: "get",
     response: () => {
-      return{
+      return {
         pagination: "pagination",
         data: [
           {
@@ -111,9 +111,10 @@ export default [
             createTime: "0001-01-01T00:00:00",
             updateTime: null,
             departureTime: null,
+            touristRoutePictures: [],
           },
-        ];
-      }
+        ],
+      };
     },
   },
 ] as MockMethod[];

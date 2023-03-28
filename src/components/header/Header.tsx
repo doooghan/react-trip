@@ -107,6 +107,9 @@ export const Header: React.FC = () => {
         <Input.Search
           placeholder={"请搜索"}
           className={styles["search-input"]}
+          onSearch={(keywords) => {
+            history.push("/search/" + keywords);
+          }}
         />
       </Layout.Header>
 
