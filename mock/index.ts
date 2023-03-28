@@ -89,4 +89,31 @@ export default [
       };
     },
   },
+  {
+    url: "/api/touristRoutes",
+    method: "get",
+    response: () => {
+      return{
+        pagination: "pagination",
+        data: [
+          {
+            id: "39996f34-013c-4fc6-b1b3-0c1036c47119",
+            title: "美国夏威夷7日5晚自由行性价比甄选:",
+            description:
+              "【酒店自选|航班多选】5晚连住酒店超优价拔草恐龙湾&钻石头山&大风口&珍珠港|首府檀香山 威基基海滩 经典行程 初游打卡",
+            price: 7003.0,
+            originalPrice: 7003.0,
+            discountPresent: null,
+            rating: 4.5,
+            travelDays: "Five",
+            tripType: "BackPackTour",
+            departureCity: "Shenzhen",
+            createTime: "0001-01-01T00:00:00",
+            updateTime: null,
+            departureTime: null,
+          },
+        ];
+      }
+    },
+  },
 ] as MockMethod[];

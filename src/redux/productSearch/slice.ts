@@ -16,9 +16,23 @@ const initialState: ProductSearchState = {
 
 export const searchProduct = createAsyncThunk(
   "productSearch/searchProduct",
-  async (touristRouteId: string, thunkAPI) => {
-    const { data } = await axios.get(`/api/touristRoutes/${touristRouteId}`);
-    return data;
+  async (
+    paramaters: {
+      keywords: string;
+      nextPage: number | string;
+      pageSize: number | string;
+    },
+    thunkAPI
+  ) => {
+    let url = `http://123.56.149.216:8080/api/touristRoutes?pageNumber=${paramaters.nextPage}&pageSize=${paramaters.pageSize}`;
+    if (paramaters.keywords) {
+      url += `&keyword=${paramaters.keywords}`;
+    }
+    const { data } = await axios.get(url);
+    return {
+      data: data.data,
+      pagination: data.pagination,
+    };
   }
 );
 
