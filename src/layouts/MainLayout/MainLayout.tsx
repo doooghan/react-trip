@@ -2,8 +2,11 @@ import { Footer } from "@/components/footer/Footer";
 import { Header } from "@/components/header";
 import styles from "./MainLayout.module.css";
 
-// <{ children: React.ElementType }>
-export const MainLayout: React.FC = ({ children }) => {
+interface PropsType {
+  children?: React.ReactNode;
+}
+
+export const MainLayout: React.FC<PropsType> = ({ children }) => {
   return (
     <>
       <Header />
