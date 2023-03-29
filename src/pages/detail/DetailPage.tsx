@@ -13,6 +13,7 @@ import {
   ProductDetailSlice,
   getProductDetail,
 } from "@/redux/productDetail/slice";
+import { MainLayout } from "@/layouts/MainLayout";
 
 const { RangePicker } = DatePicker;
 
@@ -61,9 +62,7 @@ export const DetailPage: React.FC<RouteComponentProps<MatchParams>> = (
     <>
       <h2>旅游路线详情页面, ID：{props.match.params.touristRouteId}</h2>
 
-      <Header />
-
-      <div className={styles["page-content"]}>
+      <MainLayout>
         {/* 产品简介 与 日期选择 */}
         <div className={styles["product-intro-container"]}>
           <Row>
@@ -155,9 +154,7 @@ export const DetailPage: React.FC<RouteComponentProps<MatchParams>> = (
             <ProductComments data={product.comments} />
           </div>
         </div>
-      </div>
-
-      <Footer />
+      </MainLayout>
     </>
   );
 };

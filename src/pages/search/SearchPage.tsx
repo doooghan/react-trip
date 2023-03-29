@@ -8,6 +8,7 @@ import { searchProduct } from "@/redux/productSearch/slice";
 import { useSelector } from "@/redux/hooks";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
+import { MainLayout } from "@/layouts/MainLayout";
 
 interface MatchParams {
   keywords: string;
@@ -52,24 +53,20 @@ export const SearchPage: React.FC = () => {
   }
 
   return (
-    <>
-      <Header></Header>
-      <div className={styles["page-content"]}>
-        {/* 分类过滤器 */}
-        <div className={styles["product-list-container"]}>
-          <FilterArea />
-        </div>
-        {/* 产品列表 */}
-        <div className={styles["product-list-container"]}>
-          {/* <ProductList
+    <MainLayout>
+      {/* 分类过滤器 */}
+      <div className={styles["product-list-container"]}>
+        <FilterArea />
+      </div>
+      {/* 产品列表 */}
+      <div className={styles["product-list-container"]}>
+        {/* <ProductList
             data={productList}
             paging={pagination}
             onPageChange={onPageChange}
           /> */}
-          <div>keywords是{keywords}</div>
-        </div>
+        <div>keywords是{keywords}</div>
       </div>
-      <Footer></Footer>
-    </>
+    </MainLayout>
   );
 };
