@@ -1,10 +1,8 @@
 import { UserLayout } from "@/layouts/UserLayout";
 import styles from "./RegisterPage.module.css";
 import { Button, Checkbox, Form, Input } from "antd";
-
-const onFinish = (values: any) => {
-  console.log("Success:", values);
-};
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const onFinishFailed = (errorInfo: any) => {
   console.log("Failed:", errorInfo);
@@ -12,6 +10,22 @@ const onFinishFailed = (errorInfo: any) => {
 
 export const RegisterPage: React.FC = (props) => {
   console.log(props);
+  const history = useHistory();
+
+  const onFinish = async (values: any) => {
+    console.log("Success:", values);
+    try {
+      await axios.post("auth/register", {
+        email: values.username,
+        password: values.password,
+      });
+      history.push("/signIn/");
+    } catch (error) {
+      console.error(error);
+      alert("注册失败");
+    }
+  };
+
   return (
     <UserLayout>
       <Form

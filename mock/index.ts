@@ -117,4 +117,8 @@ export default [
       };
     },
   },
+  {
+    url: "/auth/register",
+    method: "post",
+  },
 ] as MockMethod[];
