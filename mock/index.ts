@@ -121,4 +121,14 @@ export default [
     url: "/auth/register",
     method: "post",
   },
+  {
+    url: "/auth/login",
+    method: "post",
+    response: () => {
+      return {
+        token: "111",
+        code: 0,
+      };
+    },
+  },
 ] as MockMethod[];
