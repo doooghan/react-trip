@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Header.module.css";
 import logo from "../../assets/react.svg";
 import {
@@ -19,6 +19,8 @@ import {
   addLanguageActionCreator,
 } from "@/redux/language/languageActions";
 import { useTranslation } from "react-i18next";
+import { Userslice } from "@/redux/user/slice";
+// 假装安装了 jwt-decode
 
 const { Title, Text } = Typography;
 
@@ -30,6 +32,23 @@ export const Header: React.FC = () => {
   const languageList = useSelector((store) => store.language.languageList);
   const dispatch = useDispatch();
   const { t } = useTranslation();
+
+  const jwt = useSelector((s) => s.user.token);
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    if (jwt) {
+      // 假装decode
+      const token = jwt;
+      setUsername(token);
+    }
+  }, [jwt]);
+
+  const onLogout = () => {
+    dispatch(Userslice.actions.logOut());
+    history.push("/");
+    window.location.reload(); // 可加可不加
+  };
 
   const items: MenuProps["items"] = [
     { label: t("header.home_page"), key: "1" },
@@ -75,7 +94,7 @@ export const Header: React.FC = () => {
         <div className={styles.inner}>
           <Text className={styles.slogan}>{t("header.slogan")}</Text>
           <Dropdown.Button
-            style={{ marginLeft: 15, width: "80%", marginTop: "5px" }}
+            style={{ marginLeft: 15, width: "75%", marginTop: "5px" }}
             icon={<GlobalOutlined />}
             menu={{
               items: LanguageItems,
@@ -84,14 +103,25 @@ export const Header: React.FC = () => {
           >
             {language === "zh" ? "中文" : "English"}
           </Dropdown.Button>
-          <Button.Group className={styles["button-group"]}>
-            <Button onClick={() => history.push("/register")}>
-              {t("header.register")}
-            </Button>
-            <Button onClick={() => history.push("/signIn")}>
-              {t("header.signin")}
-            </Button>
-          </Button.Group>
+          {jwt ? (
+            <Button.Group className={styles["button-group"]}>
+              <span>
+                {t("header.welcome")}
+                <Typography.Text strong>{username}</Typography.Text>
+              </span>
+              <Button>{t("header.shoppingCart")}</Button>
+              <Button onClick={onLogout}>{t("header.signOut")}</Button>
+            </Button.Group>
+          ) : (
+            <Button.Group className={styles["button-group"]}>
+              <Button onClick={() => history.push("/register")}>
+                {t("header.register")}
+              </Button>
+              <Button onClick={() => history.push("/signIn")}>
+                {t("header.signin")}
+              </Button>
+            </Button.Group>
+          )}
         </div>
       </div>
 
