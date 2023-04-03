@@ -19,7 +19,7 @@ import {
   addLanguageActionCreator,
 } from "@/redux/language/languageActions";
 import { useTranslation } from "react-i18next";
-import { userslice } from "@/redux/user/slice";
+import { userSlice } from "@/redux/user/slice";
 // 假装安装了 jwt-decode
 
 const { Title, Text } = Typography;
@@ -45,9 +45,8 @@ export const Header: React.FC = () => {
   }, [jwt]);
 
   const onLogout = () => {
-    dispatch(userslice.actions.logOut());
+    dispatch(userSlice.actions.logOut());
     history.push("/");
-    window.location.reload(); // 可加可不加
   };
 
   const items: MenuProps["items"] = [

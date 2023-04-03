@@ -72,3 +72,4 @@ react + ts + vite + pnpm
     2. 无状态登陆
        1. 有状态登陆：session
     3. JWT只保存在客户端， 支持分布式部署
+21. 登陆持久化 - redux-persist
