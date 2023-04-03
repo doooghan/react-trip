@@ -10,7 +10,7 @@ import { ProductComments } from "@/components/productComments/ProductComments";
 import { useSelector } from "@/redux/hooks";
 import { useDispatch } from "react-redux";
 import {
-  ProductDetailSlice,
+  productDetailSlice,
   getProductDetail,
 } from "@/redux/productDetail/slice";
 import { MainLayout } from "@/layouts/MainLayout";

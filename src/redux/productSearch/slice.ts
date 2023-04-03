@@ -36,7 +36,7 @@ export const searchProduct = createAsyncThunk(
   }
 );
 
-export const ProductSearchSlice = createSlice({
+export const productSearchSlice = createSlice({
   name: "productSearch",
   initialState,
   reducers: {},
