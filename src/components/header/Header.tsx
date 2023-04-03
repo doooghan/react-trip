@@ -93,7 +93,7 @@ export const Header: React.FC = () => {
         <div className={styles.inner}>
           <Text className={styles.slogan}>{t("header.slogan")}</Text>
           <Dropdown.Button
-            style={{ marginLeft: 15, width: "75%", marginTop: "5px" }}
+            style={{ marginLeft: 15, width: "auto" }}
             icon={<GlobalOutlined />}
             menu={{
               items: LanguageItems,
@@ -102,6 +102,7 @@ export const Header: React.FC = () => {
           >
             {language === "zh" ? "中文" : "English"}
           </Dropdown.Button>
+          <div className={styles.space}></div>
           {jwt ? (
             <Button.Group className={styles["button-group"]}>
               <span>
