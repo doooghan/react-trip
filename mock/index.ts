@@ -24,6 +24,17 @@ const tourisRoute1 = {
   ],
 };
 
+const items = [
+  {
+    id: 1,
+    touristRouteId: 1,
+    tourisRoute: tourisRoute1,
+    shoppingCartID: null,
+    originalPrice: 15490.0,
+    discountPresent: null,
+  },
+];
+
 export default [
   {
     url: "/api/test",
@@ -147,16 +158,7 @@ export default [
       return {
         id: 1,
         userId: 1,
-        shoppingCartItems: [
-          {
-            id: 1,
-            touristRouteId: 1,
-            tourisRoute: tourisRoute1,
-            shoppingCartID: "",
-            originalPrice: 15490.0,
-            discountPresent: null,
-          },
-        ],
+        shoppingCartItems: items,
       };
     },
   },
@@ -167,21 +169,40 @@ export default [
       return {
         id: 1,
         userId: 1,
-        shoppingCartItems: [
-          {
-            id: 1,
-            touristRouteId: 1,
-            tourisRoute: tourisRoute1,
-            shoppingCartID: "",
-            originalPrice: 15490.0,
-            discountPresent: null,
-          },
-        ],
+        shoppingCartItems: items,
       };
     },
   },
   {
     url: "/api/shoppingCart/items/:id",
     method: "delete",
+  },
+  {
+    url: "/api/shoppingCart/checkout",
+    method: "post",
+    response: () => {
+      return {
+        id: 1,
+        userId: 1,
+        orderItems: items,
+        state: "Pending",
+        createDateUTC: "2023",
+        transactionMetadata: null,
+      };
+    },
+  },
+  {
+    url: "/api/shoppingCart/:id/placeOrder",
+    method: "post",
+    response: () => {
+      return {
+        id: 1,
+        userId: 1,
+        orderItems: items,
+        state: "Completed",
+        createDateUTC: "2023",
+        transactionMetadata: null,
+      };
+    },
   },
 ] as MockMethod[];

@@ -9,7 +9,7 @@ import ShoppingMain from "./pages/shopping/main";
 import { SearchPage } from "@/pages";
 import { Redirect } from "react-router-dom";
 import { useSelector } from "@/redux/hooks";
-import { ShoppingCart } from "@/pages";
+import { ShoppingCart, PlaceOrderPage } from "@/pages";
 import { useDispatch } from "react-redux";
 import { getShoppingCart } from "./redux/shoppingCart/slice";
 
@@ -49,6 +49,11 @@ const App: React.FC = () => {
             isAuthenticatd={jwt !== null}
             path="/shoppingCart"
             component={ShoppingCart}
+          />
+          <PrivateRoute
+            isAuthenticatd={jwt !== null}
+            path="/placeOrder"
+            component={PlaceOrderPage}
           />
           <Route render={() => <h1>404 not found!</h1>} />
         </Switch>
