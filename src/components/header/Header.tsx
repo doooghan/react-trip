@@ -44,6 +44,9 @@ export const Header: React.FC = () => {
     }
   }, [jwt]);
 
+  const shoppingCartLoading = useSelector((s) => s.shoppingCart.loading);
+  const shoppingCartItems = useSelector((s) => s.shoppingCart.items);
+
   const onLogout = () => {
     dispatch(userSlice.actions.logOut());
     history.push("/");
@@ -109,8 +112,11 @@ export const Header: React.FC = () => {
                 {t("header.welcome")}
                 <Typography.Text strong>{username}</Typography.Text>
               </span>
-              <Button onClick={() => history.push("/shoppingCart")}>
-                {t("header.shoppingCart")}
+              <Button
+                loading={shoppingCartLoading}
+                onClick={() => history.push("/shoppingCart")}
+              >
+                {t("header.shoppingCart")}({shoppingCartItems.length})
               </Button>
               <Button onClick={onLogout}>{t("header.signOut")}</Button>
             </Button.Group>

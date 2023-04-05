@@ -147,14 +147,16 @@ export default [
       return {
         id: 1,
         userId: 1,
-        shoppingCartItems: {
-          id: 1,
-          touristRouteId: 1,
-          tourisRoute: tourisRoute1,
-          shoppingCartID: "",
-          originalPrice: 15490.0,
-          discountPresent: null,
-        },
+        shoppingCartItems: [
+          {
+            id: 1,
+            touristRouteId: 1,
+            tourisRoute: tourisRoute1,
+            shoppingCartID: "",
+            originalPrice: 15490.0,
+            discountPresent: null,
+          },
+        ],
       };
     },
   },
@@ -165,14 +167,16 @@ export default [
       return {
         id: 1,
         userId: 1,
-        shoppingCartItems: {
-          id: 1,
-          touristRouteId: 1,
-          tourisRoute: tourisRoute1,
-          shoppingCartID: "",
-          originalPrice: 15490.0,
-          discountPresent: null,
-        },
+        shoppingCartItems: [
+          {
+            id: 1,
+            touristRouteId: 1,
+            tourisRoute: tourisRoute1,
+            shoppingCartID: "",
+            originalPrice: 15490.0,
+            discountPresent: null,
+          },
+        ],
       };
     },
   },
