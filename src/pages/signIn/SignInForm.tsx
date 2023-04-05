@@ -1,7 +1,7 @@
 import styles from "./SignInForm.module.css";
 import { Form, Input, Button, Checkbox } from "antd";
 import { signIn } from "@/redux/user/slice";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/redux/hooks";
 import { useSelector } from "@/redux/hooks";
 import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
@@ -19,7 +19,7 @@ export const SignInForm = () => {
   const error = useSelector((state) => state.user.error);
   const jwt = useSelector((state) => state.user.token);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const history = useHistory();
 
   useEffect(() => {

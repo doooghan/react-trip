@@ -12,7 +12,7 @@ import {
 } from "antd";
 import { GlobalOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/redux/hooks";
 import { useSelector } from "@/redux/hooks";
 import {
   changeLanguageActionCreator,
@@ -30,7 +30,7 @@ export const Header: React.FC = () => {
   const history = useHistory();
   const language = useSelector((store) => store.language.language);
   const languageList = useSelector((store) => store.language.languageList);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
   const jwt = useSelector((s) => s.user.token);

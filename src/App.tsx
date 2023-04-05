@@ -10,7 +10,6 @@ import { SearchPage } from "@/pages";
 import { Redirect } from "react-router-dom";
 import { useSelector, useAppDispatch } from "@/redux/hooks";
 import { ShoppingCart, PlaceOrderPage } from "@/pages";
-import { useDispatch } from "react-redux";
 import { getShoppingCart } from "./redux/shoppingCart/slice";
 
 const PrivateRoute = ({ component, isAuthenticatd, ...rest }) => {

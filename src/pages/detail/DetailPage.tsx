@@ -17,7 +17,7 @@ import { Footer } from "@/components/footer/Footer";
 import { ProductIntro } from "@/components/productIntro/ProductIntro";
 import { ProductComments } from "@/components/productComments/ProductComments";
 import { useSelector } from "@/redux/hooks";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/redux/hooks";
 import {
   productDetailSlice,
   getProductDetail,
@@ -44,7 +44,7 @@ export const DetailPage: React.FC<RouteComponentProps<MatchParams>> = (
   const error = useSelector((state) => state.productDetail.error);
   const product = useSelector((state) => state.productDetail.data);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(getProductDetail(touristRouteId));

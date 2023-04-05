@@ -6,7 +6,7 @@ import { useParams, useLocation } from "react-router-dom";
 import { Spin } from "antd";
 import { searchProduct } from "@/redux/productSearch/slice";
 import { useSelector } from "@/redux/hooks";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/redux/hooks";
 import { useEffect } from "react";
 import { MainLayout } from "@/layouts/MainLayout";
 
@@ -22,7 +22,7 @@ export const SearchPage: React.FC = () => {
   const productList = useSelector((state) => state.productSearch.data);
   const pagination = useSelector((s) => s.productSearch.pagination);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const location = useLocation();
 
   useEffect(() => {

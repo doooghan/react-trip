@@ -2,15 +2,14 @@ import { Row, Col, Affix } from "antd";
 import styles from "./ShoppingCart.module.css";
 import { MainLayout } from "@/layouts/MainLayout";
 import { ProductList, PaymentCard } from "@/components";
-import { useSelector } from "@/redux/hooks";
-import { useDispatch } from "react-redux";
+import { useSelector, useAppDispatch } from "@/redux/hooks";
 import { clearShoppingCartItem } from "@/redux/shoppingCart/slice";
 
 export const ShoppingCart: React.FC = () => {
   const loading = useSelector((s) => s.shoppingCart.loading);
   const shoppingCartItems = useSelector((s) => s.shoppingCart.items);
   const jwt = useSelector((s) => s.user.token) as string;
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <>
