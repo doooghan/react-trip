@@ -8,7 +8,7 @@ import { DetailPage } from "./pages/detail/DetailPage";
 import ShoppingMain from "./pages/shopping/main";
 import { SearchPage } from "@/pages";
 import { Redirect } from "react-router-dom";
-import { useSelector } from "@/redux/hooks";
+import { useSelector, useAppDispatch } from "@/redux/hooks";
 import { ShoppingCart, PlaceOrderPage } from "@/pages";
 import { useDispatch } from "react-redux";
 import { getShoppingCart } from "./redux/shoppingCart/slice";
@@ -27,7 +27,7 @@ const PrivateRoute = ({ component, isAuthenticatd, ...rest }) => {
 const App: React.FC = () => {
   const jwt = useSelector((s) => s.user.token);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (jwt) {
