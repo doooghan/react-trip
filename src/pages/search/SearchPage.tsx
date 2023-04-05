@@ -60,12 +60,12 @@ export const SearchPage: React.FC = () => {
       </div>
       {/* 产品列表 */}
       <div className={styles["product-list-container"]}>
-        {/* <ProductList
-            data={productList}
-            paging={pagination}
-            onPageChange={onPageChange}
-          /> */}
         <div>keywords是{keywords}</div>
+        <ProductList
+          data={productList}
+          paging={pagination}
+          onPageChange={onPageChange}
+        />
       </div>
     </MainLayout>
   );

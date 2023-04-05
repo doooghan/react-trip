@@ -1,6 +1,29 @@
 import { MockMethod } from "vite-plugin-mock";
 import { productList1, productList2, productList3 } from "./mockup";
 
+const tourisRoute1 = {
+  id: "39996f34-013c-4fc6-b1b3-0c1036c47119",
+  title: "美国夏威夷7日5晚自由行性价比甄选:",
+  description:
+    "【酒店自选|航班多选】5晚连住酒店超优价拔草恐龙湾&钻石头山&大风口&珍珠港|首府檀香山 威基基海滩 经典行程 初游打卡",
+  price: 7003.0,
+  originalPrice: 7003.0,
+  discountPresent: null,
+  rating: 4.5,
+  travelDays: "Five",
+  tripType: "BackPackTour",
+  departureCity: "Shenzhen",
+  createTime: "0001-01-01T00:00:00",
+  updateTime: null,
+  departureTime: null,
+  touristRoutePictures: [
+    {
+      id: 28,
+      url: "/src/assets/images/carousel_2.jpg",
+    },
+  ],
+};
+
 export default [
   {
     url: "/api/test",
@@ -94,26 +117,12 @@ export default [
     method: "get",
     response: () => {
       return {
-        pagination: "pagination",
-        data: [
-          {
-            id: "39996f34-013c-4fc6-b1b3-0c1036c47119",
-            title: "美国夏威夷7日5晚自由行性价比甄选:",
-            description:
-              "【酒店自选|航班多选】5晚连住酒店超优价拔草恐龙湾&钻石头山&大风口&珍珠港|首府檀香山 威基基海滩 经典行程 初游打卡",
-            price: 7003.0,
-            originalPrice: 7003.0,
-            discountPresent: null,
-            rating: 4.5,
-            travelDays: "Five",
-            tripType: "BackPackTour",
-            departureCity: "Shenzhen",
-            createTime: "0001-01-01T00:00:00",
-            updateTime: null,
-            departureTime: null,
-            touristRoutePictures: [],
-          },
-        ],
+        pagination: {
+          currentPage: 1,
+          pageSize: 1,
+          totalCount: 1,
+        },
+        data: [tourisRoute1],
       };
     },
   },
@@ -130,5 +139,45 @@ export default [
         code: 0,
       };
     },
+  },
+  {
+    url: "/api/shoppingCart",
+    method: "get",
+    response: () => {
+      return {
+        id: 1,
+        userId: 1,
+        shoppingCartItems: {
+          id: 1,
+          touristRouteId: 1,
+          tourisRoute: tourisRoute1,
+          shoppingCartID: "",
+          originalPrice: 15490.0,
+          discountPresent: null,
+        },
+      };
+    },
+  },
+  {
+    url: "/api/shoppingCart/items",
+    method: "post",
+    response: () => {
+      return {
+        id: 1,
+        userId: 1,
+        shoppingCartItems: {
+          id: 1,
+          touristRouteId: 1,
+          tourisRoute: tourisRoute1,
+          shoppingCartID: "",
+          originalPrice: 15490.0,
+          discountPresent: null,
+        },
+      };
+    },
+  },
+  {
+    url: "/api/shoppingCart/items/:id",
+    method: "delete",
   },
 ] as MockMethod[];
