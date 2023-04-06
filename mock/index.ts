@@ -28,7 +28,7 @@ const items = [
   {
     id: 1,
     touristRouteId: 1,
-    tourisRoute: tourisRoute1,
+    touristRoute: tourisRoute1,
     shoppingCartID: null,
     originalPrice: 15490.0,
     discountPresent: null,
@@ -192,7 +192,7 @@ export default [
     },
   },
   {
-    url: "/api/shoppingCart/:id/placeOrder",
+    url: "/api/orders/:id/placeOrder",
     method: "post",
     response: () => {
       return {

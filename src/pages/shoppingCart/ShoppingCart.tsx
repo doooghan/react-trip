@@ -3,13 +3,16 @@ import styles from "./ShoppingCart.module.css";
 import { MainLayout } from "@/layouts/MainLayout";
 import { ProductList, PaymentCard } from "@/components";
 import { useSelector, useAppDispatch } from "@/redux/hooks";
-import { clearShoppingCartItem } from "@/redux/shoppingCart/slice";
+import { clearShoppingCartItem, checkout } from "@/redux/shoppingCart/slice";
+import { useHistory } from "react-router-dom";
 
 export const ShoppingCart: React.FC = () => {
   const loading = useSelector((s) => s.shoppingCart.loading);
   const shoppingCartItems = useSelector((s) => s.shoppingCart.items);
   const jwt = useSelector((s) => s.user.token) as string;
   const dispatch = useAppDispatch();
+
+  const history = useHistory();
 
   return (
     <>
@@ -18,7 +21,9 @@ export const ShoppingCart: React.FC = () => {
           {/* 购物车清单 */}
           <Col span={16}>
             <div className={styles["product-list-container"]}>
-              <ProductList data={shoppingCartItems.map((s) => s.tourisRoute)} />
+              <ProductList
+                data={shoppingCartItems.map((s) => s.touristRoute)}
+              />
             </div>
           </Col>
           {/* 支付卡组件 */}
@@ -37,7 +42,13 @@ export const ShoppingCart: React.FC = () => {
                         (s.discountPresent ? s.discountPresent : 1)
                     )
                     .reduce((a, b) => a + b, 0)}
-                  onCheckout={() => {}}
+                  onCheckout={() => {
+                    if (shoppingCartItems.length <= 0) {
+                      return;
+                    }
+                    dispatch(checkout(jwt));
+                    history.push("/placeOrder");
+                  }}
                   onShoppingCartClear={() =>
                     dispatch(
                       clearShoppingCartItem({
