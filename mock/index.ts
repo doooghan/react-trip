@@ -3,7 +3,7 @@ import { productList1, productList2, productList3 } from "./mockup";
 
 const tourisRoute1 = {
   id: "39996f34-013c-4fc6-b1b3-0c1036c47119",
-  title: "美国夏威夷7日5晚自由行性价比甄选:",
+  title: "泰国缅甸嘎腰子有去无回自由行套餐",
   description:
     "【酒店自选|航班多选】5晚连住酒店超优价拔草恐龙湾&钻石头山&大风口&珍珠港|首府檀香山 威基基海滩 经典行程 初游打卡",
   price: 7003.0,
@@ -146,7 +146,7 @@ export default [
     method: "post",
     response: () => {
       return {
-        token: "111",
+        token: "瓜晨晨",
         code: 0,
       };
     },
