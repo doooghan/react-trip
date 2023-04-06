@@ -1,5 +1,9 @@
 # react-trip
 
+## mooc
+
+https://coding.imooc.com/class/475.html
+
 ## 技术栈
 
 react + ts + vite + pnpm
@@ -74,3 +78,10 @@ react + ts + vite + pnpm
     3. JWT只保存在客户端， 支持分布式部署
 21. 登陆持久化 - redux-persist
 22. 私有路由 - 只有登陆才能看见
+
+## 官方介绍
+1. 实现产品浏览，用户登录，购物车，下单结算四大模块，共计实现8个页面，实现13个组件封装
+2. 从需求分析开始，逐步实现页面布局，生命周期管理，架构设计，以及全局状态，最终实现项目
+3. redux 实现网站状态全局管理
+4. react-router 处理公有、私有路由
+5. redux-persist 实现网站状态持久化
